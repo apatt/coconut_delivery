@@ -28,7 +28,7 @@ def load_jetstreams(filename):
         #print start, end, cost
         js.append([start, end, cost])
     js.sort()
-    print len(js)
+    print 'loaded %s jet streams' % len(js)
     return base, path_end, js
 
 # calculation cache to keep the number of loops sane 
@@ -79,11 +79,12 @@ def travel(current_cost, current_pos, js, base_cost, path_end, path, depth=1):
     
     
 if __name__ == '__main__':
+    filename = sys.argv[1]
     #base, path_end, js = load_jetstreams('sample_paths.txt')
-    base, path_end, js = load_jetstreams('flight_paths.txt')
+    base, path_end, js = load_jetstreams(filename)
     cost, path = travel(0, 0, js, base, path_end, ())
     
-    print 'energy cost:', cost
     print 'path:', path
+    print 'energy cost:', cost
     
                 
